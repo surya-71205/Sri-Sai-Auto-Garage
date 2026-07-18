@@ -1,0 +1,8 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "XVz8A3yuB4yCu5rb2FpP8"
+uri = "file://sri-sai-auto-garage-backup.zip"
+type = "unspecified"
+title = "Sri Sai Auto Garage — Full Project Backup"
