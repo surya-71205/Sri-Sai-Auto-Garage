@@ -45,18 +45,12 @@ export function Hero() {
             {HERO_SUBTITLE}
           </motion.p>
           
-          <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <motion.div variants={fadeInUp} className="flex items-center justify-center">
             <a 
               href={`tel:${PHONE}`}
-              className="w-full sm:w-auto px-8 py-4 bg-accent text-white rounded-full font-bold uppercase tracking-wider text-sm transition-all shadow-[0_0_20px_rgba(230,57,70,0.4)] hover:shadow-[0_0_30px_rgba(230,57,70,0.6)] hover:-translate-y-1"
+              className="px-10 py-4 bg-accent text-white rounded-full font-bold uppercase tracking-wider text-sm transition-all shadow-[0_0_20px_rgba(230,57,70,0.4)] hover:shadow-[0_0_30px_rgba(230,57,70,0.6)] hover:-translate-y-1"
             >
               Call Us
-            </a>
-            <a 
-              href={`tel:${PHONE}`} 
-              className="w-full sm:w-auto px-8 py-4 bg-transparent text-foreground border border-white/20 rounded-full font-bold uppercase tracking-wider text-sm transition-all hover:bg-white/5 hover:border-white/40 hover:-translate-y-1"
-            >
-              Call Now
             </a>
           </motion.div>
         </motion.div>

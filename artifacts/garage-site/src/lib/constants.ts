@@ -1,12 +1,12 @@
-export const GARAGE_NAME = "[GARAGE_NAME]";
-export const PHONE = "+1 (555) 123-4567";
-export const WHATSAPP_NUMBER = "15551234567";
-export const EMAIL = "service@garage.com";
-export const ADDRESS = "123 Precision Way, Motor City, MC 90210";
+export const GARAGE_NAME = "Sri Sai Auto Garage";
+export const PROPRIETOR = "MURALI KRISHNAN A";
+export const PHONE = "+919445579892";
+export const WHATSAPP_NUMBER = "919445579892";
+export const EMAIL = "srisaiautogarage@gmail.com";
+export const ADDRESS = "No. 1, Pari Nagar, Thillainayagapuram, Vandigage, Chidambaram, Tamil Nadu – 608102";
 
 export const BUSINESS_HOURS = [
-  { day: "Monday - Friday", hours: "8:00 AM - 6:00 PM" },
-  { day: "Saturday", hours: "9:00 AM - 4:00 PM" },
+  { day: "Monday – Saturday", hours: "9:00 AM – 7:00 PM" },
   { day: "Sunday", hours: "Closed" },
 ];
 
@@ -30,10 +30,6 @@ export const SERVICES = [
   { icon: "Settings", title: "General Service", description: "Comprehensive multi-point inspections and routine maintenance." },
   { icon: "Waves", title: "Suspension", description: "Struts, shocks, and full suspension system overhauls." },
   { icon: "CalendarClock", title: "Periodic Maintenance", description: "Scheduled mileage-based services to maintain warranty." },
-  { icon: "Sparkles", title: "Car Wash", description: "Deep exterior wash and interior vacuuming." },
-  { icon: "Paintbrush", title: "Painting", description: "Custom paint jobs and scratch touch-ups." },
-  { icon: "Hammer", title: "Dent Removal", description: "Paintless dent repair and structural straightening." },
-  { icon: "ShieldCheck", title: "Insurance Repair", description: "Hassle-free claims and guaranteed collision repairs." },
   { icon: "Truck", title: "Pickup & Drop", description: "Convenient vehicle pickup and delivery service." }
 ];
 
