@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
-import { HERO_HEADLINE, HERO_SUBTITLE, PHONE } from "@/lib/constants";
+import { HERO_HEADLINE, HERO_SUBTITLE, PHONE, PROPRIETOR } from "@/lib/constants";
 
 export function Hero() {
   return (
@@ -30,6 +30,13 @@ export function Hero() {
             <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
             Premium Workshop
           </motion.div>
+
+          <motion.p
+            variants={fadeInUp}
+            className="text-muted-foreground text-sm uppercase tracking-[0.2em] mb-3 font-medium"
+          >
+            Proprietor : <span className="text-foreground font-semibold">{PROPRIETOR}</span>
+          </motion.p>
           
           <motion.h1 
             variants={fadeInUp}

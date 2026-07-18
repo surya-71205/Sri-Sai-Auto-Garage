@@ -64,7 +64,7 @@ export function About() {
             </div>
 
             <div className="mt-10 flex flex-wrap gap-4">
-              {['ASE Certified', 'Genuine Parts', 'Honest Pricing'].map((badge) => (
+              {['Genuine Parts', 'Honest Pricing'].map((badge) => (
                 <span key={badge} className="px-4 py-2 rounded-full bg-surface border border-white/5 text-sm font-medium text-foreground flex items-center gap-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-accent" />
                   {badge}

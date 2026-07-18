@@ -36,8 +36,7 @@ export const SERVICES = [
 export const STATS = [
   { value: 5000, suffix: "+", label: "Vehicles Serviced" },
   { value: 10, suffix: "+", label: "Years Experience" },
-  { value: 1000, suffix: "+", label: "Happy Customers" },
-  { value: 500, suffix: "+", label: "5-Star Reviews" }
+  { value: 1000, suffix: "+", label: "Happy Customers" }
 ];
 
 export const PROCESS_STEPS = [

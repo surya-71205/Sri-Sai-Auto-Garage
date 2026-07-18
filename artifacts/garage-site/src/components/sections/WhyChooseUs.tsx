@@ -8,7 +8,6 @@ export function WhyChooseUs() {
   const features = [
     "Quick Turnaround Time",
     "Affordable, Transparent Pricing",
-    "ASE Certified Mechanics",
     "Original Spare Parts Used",
     "State-of-the-Art Diagnostic Tools",
     "Honest Advice, No Upsells"
