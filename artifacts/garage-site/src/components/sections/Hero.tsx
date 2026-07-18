@@ -47,10 +47,10 @@ export function Hero() {
           
           <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a 
-              href="#contact" 
+              href={`tel:${PHONE}`}
               className="w-full sm:w-auto px-8 py-4 bg-accent text-white rounded-full font-bold uppercase tracking-wider text-sm transition-all shadow-[0_0_20px_rgba(230,57,70,0.4)] hover:shadow-[0_0_30px_rgba(230,57,70,0.6)] hover:-translate-y-1"
             >
-              Book Service
+              Call Us
             </a>
             <a 
               href={`tel:${PHONE}`} 

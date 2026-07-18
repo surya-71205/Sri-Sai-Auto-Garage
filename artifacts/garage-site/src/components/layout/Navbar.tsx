@@ -56,11 +56,11 @@ export function Navbar() {
           </ul>
           
           <a 
-            href="#contact" 
+            href={`tel:${PHONE}`}
             className="flex items-center gap-2 bg-accent hover:bg-accent/90 text-white px-5 py-2.5 rounded-full font-medium transition-all shadow-[0_0_15px_rgba(230,57,70,0.3)] hover:shadow-[0_0_20px_rgba(230,57,70,0.5)] transform hover:-translate-y-0.5"
           >
             <Phone className="w-4 h-4" />
-            <span>Book Now</span>
+            <span>Call Us</span>
           </a>
         </nav>
 
