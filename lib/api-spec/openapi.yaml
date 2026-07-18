@@ -3,13 +3,17 @@ info:
   # Do not change the title, if the title changes, the import paths will be broken
   title: Api
   version: 0.1.0
-  description: API specification
+  description: API specification for the garage marketing site
 servers:
   - url: /api
     description: Base API path
 tags:
   - name: health
     description: Health operations
+  - name: contact
+    description: Contact form submissions
+  - name: booking
+    description: Appointment bookings
 paths:
   /healthz:
     get:
@@ -24,6 +28,57 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/HealthStatus"
+
+  /contact:
+    post:
+      operationId: submitContact
+      tags: [contact]
+      summary: Submit a contact form
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ContactInput"
+      responses:
+        "200":
+          description: Submission received
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SubmissionResult"
+        "400":
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResult"
+
+  /booking:
+    post:
+      operationId: submitBooking
+      tags: [booking]
+      summary: Submit a service appointment booking
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/BookingInput"
+      responses:
+        "200":
+          description: Booking received
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SubmissionResult"
+        "400":
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResult"
+
 components:
   schemas:
     HealthStatus:
@@ -34,3 +89,59 @@ components:
       required:
         - status
 
+    ContactInput:
+      type: object
+      required: [name, phone, message]
+      properties:
+        name:
+          type: string
+          minLength: 1
+        phone:
+          type: string
+          minLength: 1
+        email:
+          type: ["string", "null"]
+        message:
+          type: string
+          minLength: 1
+        serviceNeeded:
+          type: ["string", "null"]
+
+    BookingInput:
+      type: object
+      required: [name, phone, service, preferredDate]
+      properties:
+        name:
+          type: string
+          minLength: 1
+        phone:
+          type: string
+          minLength: 1
+        email:
+          type: ["string", "null"]
+        service:
+          type: string
+          minLength: 1
+        preferredDate:
+          type: string
+          description: ISO 8601 date string
+        preferredTime:
+          type: ["string", "null"]
+        notes:
+          type: ["string", "null"]
+
+    SubmissionResult:
+      type: object
+      required: [success, message]
+      properties:
+        success:
+          type: boolean
+        message:
+          type: string
+
+    ErrorResult:
+      type: object
+      required: [error]
+      properties:
+        error:
+          type: string

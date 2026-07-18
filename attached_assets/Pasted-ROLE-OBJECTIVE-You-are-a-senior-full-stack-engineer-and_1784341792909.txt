@@ -1,0 +1,353 @@
+ROLE & OBJECTIVE
+
+You are a senior full-stack engineer and UI/UX designer. Build a complete, modern, responsive, production-quality marketing website for a local automobile garage/workshop. The site is the garage's official online identity — it must build trust, showcase professionalism, and drive customers to call or visit. Treat this like a real client project: production-grade code, clean architecture, and a design that feels premium and automotive-inspired rather than templated.
+
+Do not ask clarifying questions before starting — use sensible defaults and placeholder content/assets everywhere real content isn't provided, and clearly mark every placeholder so the owner can swap it later.
+
+
+1. TECH STACK
+
+
+Framework: Next.js (App Router) with React and TypeScript
+Styling: Tailwind CSS with a custom design-token theme (see Section 4)
+Animation: Framer Motion for scroll/hover/entry animations; CSS keyframes for ambient effects (light streaks, glow, wheel rotation)
+Icons: Lucide React
+Forms: React Hook Form + Zod validation
+Image handling: Next.js <Image> with lazy loading and responsive sizes
+Deployment target: Replit's Node.js hosting, fully static-friendly where possible
+Component-driven architecture, strict typing, no unused code, no console errors/warnings
+
+
+
+2. DEVELOPMENT PHASES
+
+Build in this order, committing working code at each phase:
+
+
+Phase 0 — Scaffolding: Next.js + TypeScript + Tailwind setup, folder structure, design tokens, global layout, fonts, favicon.
+Phase 1 — Core Layout: Navbar, Footer, floating action buttons, page shell, smooth-scroll config.
+Phase 2 — Hero & Landing: Cinematic hero section with animated elements.
+Phase 3 — Content Sections: About, Services, Why Choose Us, Work Process.
+Phase 4 — Social Proof: Gallery, Testimonials, Quotes.
+Phase 5 — Conversion Sections: Location/Map, Contact (form + direct actions).
+Phase 6 — Polish: Animations pass, responsive QA, accessibility audit, SEO/meta, performance optimization.
+Phase 7 — Optional Features: Dark mode, booking form, FAQ, newsletter, emergency banner (build behind clean toggles so they can be enabled later).
+
+
+
+3. FOLDER STRUCTURE
+
+/app
+  layout.tsx
+  page.tsx
+  globals.css
+  /api
+    /contact/route.ts
+    /booking/route.ts
+/components
+  /layout
+    Navbar.tsx
+    Footer.tsx
+    FloatingButtons.tsx  (WhatsApp, Call, Back-to-top)
+  /sections
+    Hero.tsx
+    About.tsx
+    Services.tsx
+    WhyChooseUs.tsx
+    WorkProcess.tsx
+    Gallery.tsx
+    Testimonials.tsx
+    Quotes.tsx
+    Location.tsx
+    Contact.tsx
+    FAQ.tsx (optional, hidden by default)
+    EmergencyBanner.tsx (optional, hidden by default)
+  /ui
+    Button.tsx
+    Card.tsx
+    SectionHeading.tsx
+    Counter.tsx (animated stat counter)
+    StarRating.tsx
+    Lightbox.tsx
+    Modal.tsx
+/lib
+  constants.ts   (garage name, phone, address, hours, services list, testimonials data)
+  animations.ts  (shared Framer Motion variants)
+  utils.ts
+/public
+  /images
+    /hero, /gallery, /team, /icons
+  favicon.ico
+/types
+  index.ts
+
+Every editable piece of content (garage story, services list, testimonials, stats, quotes) must live in /lib/constants.ts as typed data objects — never hardcoded inline in components — so the owner or a future developer can update text without touching JSX.
+
+
+4. DESIGN SYSTEM
+
+4.1 Color Palette (define as Tailwind theme tokens)
+
+TokenHexUsebackground#0A0A0BPrimary dark backgroundsurface#151517Card/section backgroundssurface-elevated#1F1F22Glass panelsforeground#F5F5F5Primary textmuted#A1A1A6Secondary textborder#2A2A2EDividers, card bordersmetallic-silver#C7CBD1Accents, icon strokesaccent#E63946 (red)Primary CTA, highlightsaccent-alt#FF7A00 (orange)Secondary accent, gradientssuccess#22C55EConfirmations
+
+Provide both a dark theme (default) and an optional light theme using the same tokens inverted, wired through a ThemeProvider with a toggle in the navbar.
+
+4.2 Typography
+
+
+Headings: A bold, condensed, modern sans-serif (e.g., "Sora" or "Space Grotesk") — conveys precision and speed.
+Body: A highly legible sans-serif (e.g., "Inter" or "Manrope").
+Load via next/font for performance. Define a type scale: text-hero (56–72px desktop / 32–40px mobile), h1–h4, body, caption.
+
+
+4.3 Visual Language
+
+
+Glassmorphism panels (backdrop-blur, translucent surface + thin border) for nav, cards on top of imagery, and floating stat panels.
+Soft, layered shadows (shadow-lg/shadow-2xl with a subtle red/orange glow on hover for CTAs).
+Rounded corners: rounded-2xl for cards, rounded-full for buttons/pills.
+Consistent 8px spacing scale; generous section padding (py-20–py-32 desktop, py-12–py-16 mobile).
+
+
+
+5. GLOBAL COMPONENTS
+
+5.1 Navigation Bar
+
+
+Sticky, becomes solid/blurred on scroll (transparent over hero, opaque elsewhere).
+Logo + garage name (left), links: Home, Services, About, Gallery, Testimonials, Location, Contact (center/right).
+Prominent "Call Now" button styled in accent color.
+Hamburger menu with slide-in drawer on mobile/tablet.
+Dark-mode toggle if dark mode is implemented.
+
+
+5.2 Floating Buttons
+
+
+Fixed-position stack, bottom-right: WhatsApp (opens https://wa.me/<PLACEHOLDER_NUMBER>), Call (tel: link), Back-to-top (appears after scrolling past hero).
+Each with subtle pulse/breathing animation to draw attention without being distracting.
+
+
+5.3 Footer
+
+
+Columns: Business hours, Quick links, Contact/social icons, Copyright with current year computed dynamically.
+Reiterate address and phone.
+
+
+
+6. SECTION-BY-SECTION SPECIFICATION
+
+6.1 Hero (Landing)
+
+
+Full-viewport section with a background image or looping muted video of a premium workshop (placeholder path: /public/images/hero/hero-bg.jpg, note in code where to swap for the real asset).
+Dark gradient overlay (bottom-heavy) to ensure text contrast.
+Big headline (e.g., "Precision. Trust. Performance." — placeholder, editable), professional subtitle describing the garage's promise.
+Primary CTA button "Book Service" (accent-filled, glow-on-hover), secondary "Call Now" (outlined/ghost).
+Ambient animated details, kept subtle and performant:
+
+Slow-moving diagonal light streaks (CSS gradient animation)
+Faint rotating wheel/rim SVG in a corner
+Soft engine-glow radial gradient pulsing behind the headline
+Optional horizontal speed-line accents on scroll-in
+
+
+
+Scroll-down indicator at the bottom.
+
+
+6.2 About
+
+
+Two-column layout: proprietor portrait/workshop photo placeholder + narrative copy.
+Placeholder story text covering: years of dedication, passion for automobiles, commitment to quality, customer satisfaction, honesty, hard work, craftsmanship, reliability — written as flowing, editable paragraphs stored in constants.ts, not hardcoded.
+Small credential badges row (e.g., "10+ Years", "Certified Mechanics") as glass pill chips.
+
+
+6.3 Services
+
+
+Responsive grid (4 cols desktop / 2 tablet / 1 mobile) of cards for: Engine Repair, Oil Change, General Service, Brake Repair, Battery Replacement, Suspension, Wheel Alignment, AC Service, Diagnostics, Periodic Maintenance, Car Wash, Painting, Dent Removal, Insurance Repair, and an optional Pickup & Drop card.
+Each card: icon (Lucide, mapped per service), title, 1–2 line description, hover state (lift + border glow + icon color shift), all sourced from a typed services array in constants.ts so adding/removing a service is a one-line change.
+
+
+6.4 Why Choose Us
+
+
+Row of animated counters that count up when scrolled into view: "5000+ Vehicles Serviced", "10+ Years Experience", "1000+ Happy Customers", plus feature bullets — Quick Turnaround, Affordable Pricing, Certified Mechanics, Original Spare Parts, Transparent Pricing.
+Build the Counter component to be reusable (props: target number, suffix, duration).
+
+
+6.5 Work Process
+
+
+Vertical (mobile) / horizontal (desktop) animated timeline: Vehicle Inspection → Diagnosis → Estimate → Repair → Quality Check → Delivery.
+Each step animates in sequentially on scroll (staggered Framer Motion variants), connected by a progress line that fills as the user scrolls.
+
+
+6.6 Gallery
+
+
+Masonry or grid gallery with categories: Before/After repairs, Workshop, Mechanics at work, Customer vehicles.
+Lazy-loaded images, click-to-open lightbox with next/prev navigation and keyboard support (Esc/Arrow keys).
+Use placeholder images from /public/images/gallery/ with clear filenames indicating what each should eventually show.
+
+
+6.7 Testimonials
+
+
+Auto-advancing carousel (pausable on hover/focus) of customer quote cards with name, star rating (1–5), and optional avatar placeholder.
+Swipe support on mobile, dot/arrow navigation.
+
+
+6.8 Quotes / Inspiration
+
+
+A visually distinct section (different background treatment, e.g., subtle engine-glow gradient) presenting short motivational quotes about craftsmanship, discipline, hard work, and customer service.
+Include 4–6 original automotive-themed motivational quotes written specifically for this garage, e.g.:
+
+"Every engine has a story. We make sure it has a good ending."
+"Precision isn't a task here — it's a habit."
+"We don't just fix cars. We restore confidence in every mile."
+"Great mechanics aren't born from shortcuts — they're built through discipline."
+"Your car trusts the road. We make sure the road can trust your car."
+"Craftsmanship is the difference between a repair and a promise kept."
+
+
+
+Provide placeholder portrait circles for attributed quotes (owner/staff) that the client can replace later.
+
+
+6.9 Location
+
+
+Embedded interactive Google Map (iframe placeholder with a clearly marked spot to insert the real embed URL/API key).
+Address, opening hours table (Mon–Sun), 2–3 nearby landmark references, and a "Get Directions" button linking to Google Maps directions.
+
+
+6.10 Contact
+
+
+Two-column: contact details (phone with tel: link, WhatsApp button, email with mailto:) + a validated contact form (Name, Phone, Email, Message/Service Needed).
+Form submits to /api/contact/route.ts (stub the handler — log/store the submission and return success; note where to wire a real email service like Resend or Nodemailer).
+Prominent duplicate "Call Now" and "Book Appointment" buttons.
+
+
+
+7. OPTIONAL FEATURES (build behind feature flags, off by default except where noted)
+
+
+Dark/light mode toggle (on by default, dark as the default theme)
+Appointment booking form (date/time/service picker) posting to /api/booking/route.ts
+FAQ accordion section
+Service Request / Vehicle Pickup Request / Estimate Request forms (can reuse the Contact form component with a type prop)
+Image compression pipeline note (use Next.js Image optimization; no extra library needed)
+Blog section: create the route and layout but keep it unlinked from navigation until content exists
+Newsletter signup (email capture field in footer)
+Emergency breakdown banner: dismissible top banner component, hidden by default, easy to enable via a constant flag
+
+
+
+8. ANIMATION REQUIREMENTS
+
+
+Every section fades/slides into view once on scroll (Intersection Observer via Framer Motion whileInView), never re-triggering distractingly on scroll-up.
+Parallax on hero background (subtle, capped movement).
+Counter count-up animations (Why Choose Us).
+Card hover: lift + shadow glow + icon accent shift.
+Button ripple effect on click.
+Animated gradient backgrounds behind the Quotes and Hero sections.
+Occasional subtle car silhouette or speed-line sweep across a section divider (used sparingly, not on every section).
+Wheel-rotation micro-animation used as a loading spinner ("speedometer" style loader) during route/data transitions.
+All animations must respect prefers-reduced-motion and degrade to simple fades when set.
+Keep everything performant: prefer CSS transforms/opacity, avoid layout-thrashing properties, cap simultaneous animated elements.
+
+
+
+9. RESPONSIVE BEHAVIOR
+
+
+Breakpoints: mobile (<640px), tablet (640–1024px), laptop (1024–1440px), desktop (1440px+).
+Navbar collapses to a drawer below tablet.
+Grids reflow: Services 4→2→1 columns; Gallery masonry adjusts column count; Work Process switches from horizontal to vertical timeline below tablet.
+Touch-friendly tap targets (min 44px) on all interactive elements on mobile.
+Test and ensure no horizontal overflow at any breakpoint.
+
+
+
+10. ACCESSIBILITY
+
+
+Semantic HTML landmarks (header, nav, main, section, footer).
+All images have descriptive alt text (or alt="" for decorative ones).
+Sufficient color contrast against the dark theme (verify accent-on-dark meets WCAG AA for text use).
+Keyboard-navigable nav, carousel, lightbox, and forms; visible focus states.
+ARIA labels on icon-only buttons (WhatsApp, Call, Back-to-top).
+Form fields with associated <label>s and inline error messaging.
+
+
+
+11. SEO
+
+Generate and wire into app/layout.tsx metadata:
+
+
+Meta title: "[Garage Name] — Trusted Car Repair & Service Workshop" (placeholder name)
+Meta description: A concise ~155-character summary covering services, trust, and location, editable in constants.ts.
+Keywords: car service near me, car repair workshop, engine repair, brake service, wheel alignment, [city] auto garage, certified mechanics
+Open Graph tags: og:title, og:description, og:image (hero image), og:type=website, og:locale
+Structured data: JSON-LD LocalBusiness/AutoRepair schema with name, address, phone, opening hours, geo-coordinates (placeholders), and price range
+Favicon and app icons (multiple sizes) referenced in the manifest
+Descriptive, unique <h1> per page; clean semantic heading hierarchy throughout
+
+
+
+12. PERFORMANCE
+
+
+Use next/image everywhere with proper sizes/priority (hero image only) to avoid layout shift.
+Lazy-load below-the-fold sections and gallery images.
+Minimize client-side JS: mark sections as Server Components where no interactivity is needed; only Hero, Testimonials carousel, Gallery lightbox, Counters, and forms need "use client".
+Preload key fonts, avoid font layout shift (font-display: swap).
+Target Lighthouse scores of 90+ across Performance, Accessibility, Best Practices, SEO.
+
+
+
+13. ASSETS & PLACEHOLDERS NEEDED
+
+Clearly comment in code wherever a placeholder is used, and centralize placeholder paths in constants.ts:
+
+
+Hero background image/video
+Workshop and proprietor photos (About section)
+Service icons (use Lucide icon set, no external image assets required)
+Gallery images: before/after pairs, workshop shots, mechanics at work, customer vehicles
+Testimonial avatars
+Quote section portraits
+Logo (SVG placeholder wordmark using the garage name)
+Favicon/app icons
+Garage name, phone number, WhatsApp number, email, full address, and business hours — all as clearly named constants ready for the owner to fill in
+
+
+
+14. FUTURE SCALABILITY NOTES
+
+
+Structure content as typed data so it could later be swapped for a CMS (e.g., Sanity or a simple JSON/database-backed admin) with minimal refactor.
+Keep the Blog route scaffolded but unlinked, ready to activate.
+Keep forms API-route-based so they can later be connected to a real backend/CRM without touching UI components.
+Keep the admin-panel possibility in mind: avoid hardcoding any editable text directly in JSX.
+
+
+
+15. DELIVERABLE EXPECTATIONS
+
+
+Fully working Next.js project that runs with npm run dev with zero errors.
+Clean, commented, reusable components; no dead code.
+All placeholder content clearly marked and centralized for easy editing.
+Fully responsive across all breakpoints.
+Smooth, elegant, non-distracting animations throughout.
+Production-ready visual polish comparable to modern automotive brand websites.

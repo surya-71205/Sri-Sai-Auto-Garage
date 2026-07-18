@@ -1,0 +1,27 @@
+kind = "web"
+previewPath = "/"
+title = "Garage Marketing Site"
+version = "1.0.0"
+id = "artifacts/garage-site"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 25948
+
+[services.development]
+run = "pnpm --filter @workspace/garage-site run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/garage-site", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/garage-site/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "25948"
+BASE_PATH = "/"
