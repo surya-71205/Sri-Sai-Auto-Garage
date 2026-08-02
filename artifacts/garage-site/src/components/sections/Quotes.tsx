@@ -7,11 +7,11 @@ export function Quotes() {
     <section className="py-24 bg-[#0A0A0B] relative border-y border-white/5 overflow-hidden">
       {/* Cinematic gradient overlay */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(230,57,70,0.05),transparent_60%)]" />
-      
+
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
           {QUOTES.map((quote, index) => (
-            <motion.div 
+            <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
