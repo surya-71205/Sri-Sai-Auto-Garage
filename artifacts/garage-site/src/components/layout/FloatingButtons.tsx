@@ -1,7 +1,7 @@
-import { ArrowUp, MessageCircle, Phone } from "lucide-react";
+import { ArrowUp, MessageCircle, Phone, MapPin } from "lucide-react";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { PHONE, WHATSAPP_NUMBER } from "@/lib/constants";
+import { PHONE, WHATSAPP_NUMBER, GOOGLE_MAPS_URL, } from "@/lib/constants";
 
 export function FloatingButtons() {
   const [showTopBtn, setShowTopBtn] = useState(false);
@@ -86,6 +86,41 @@ export function FloatingButtons() {
         "/>
       </motion.a>
 
+      {/* Location */}
+<motion.a
+  href={GOOGLE_MAPS_URL}
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Open Sri Sai Auto Garage Location"
+  {...buttonAnimation}
+  className="
+    relative flex items-center justify-center
+    w-14 h-14 rounded-full
+    bg-[#EA4335] text-white
+    shadow-[0_0_20px_rgba(234,67,53,0.45)]
+    hover:scale-110
+    transition-transform
+    group
+  "
+>
+  <MapPin className="w-6 h-6" />
+
+  <span
+    className="
+      absolute right-full mr-3
+      bg-surface text-foreground
+      border border-white/10
+      px-3 py-2 rounded-lg
+      text-sm font-medium
+      whitespace-nowrap
+      opacity-0
+      group-hover:opacity-100
+      transition-opacity
+    "
+  >
+    Get Directions
+  </span>
+</motion.a>
 
       {/* Call */}
       <motion.a
