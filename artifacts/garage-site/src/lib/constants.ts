@@ -2,6 +2,8 @@ export const GARAGE_NAME = "Sri Sai Auto Garage";
 export const PROPRIETOR = "MURALI KRISHNAN A";
 export const PHONE = "+919445579892";
 export const WHATSAPP_NUMBER = "919445579892";
+export const GOOGLE_MAPS_URL =
+  "https://maps.app.goo.gl/uyPyopAafWyEUJ7b8";
 export const EMAIL = "srisaiautogarage@gmail.com";
 export const ADDRESS =
   "No. 1, Pari Nagar, Thillainayakapuram, Vandigate, Chidambaram, Tamil Nadu – 608102";
